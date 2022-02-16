@@ -1,0 +1,231 @@
+/* start public code */
+@font-face {
+    font-family: "Vazir";
+    src: url("fonts/Vazir-Regular-FD.eot") format("eot");
+    src: url("fonts/Vazir-Regular-FD.ttf") format("ttf");
+    src: url("fonts/Vazir-Regular-FD.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    direction: rtl;
+}
+body{
+    font-family: Vazir;
+    background-color: #353535;
+    color: #c9c9c9;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+span{
+    color: #fff;
+}
+.my-button{
+    border: 2px solid #c511e9;
+    background: none;
+    color:#c511e9;
+    border-radius: 5px;
+    padding: 0 10px;
+    line-height: 2.3em;
+    transition: all .3s;
+}
+.my-button:hover{
+    background: #c511e9;
+    color: #fff;
+}
+.my-button2{
+    border: 2px solid #fff;
+    background: #fff;
+    color:#c511e9;
+    border-radius: 5px;
+    padding: 0 10px;
+    line-height: 2.3em;
+    transition: all .3s;
+}
+.my-button2:hover{
+    background: #c511e9;
+    color: #fff;
+}
+.my-button3{
+    border: 2px solid #fff;
+    background: #c511e9;
+    color:#fff;
+    border-radius: 5px;
+    padding: 0 10px;
+    line-height: 2.3em;
+    transition: all .3s;
+}
+.my-button3:hover{
+    background: #fff;
+    color: #c511e9;
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+
+.titr{
+    color: #c511e9;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+
+
+/* start social menu --------------------------------------*/
+#social-menu{
+    direction: ltr;
+    width: 100%;
+    overflow: hidden;
+    line-height: 40px;
+    background-color: #141414;
+}
+#social-menu ul{
+    list-style: none;
+    float: left;
+    margin-left: 5%;
+}
+#social-menu a{
+    display: inline-block;
+    background-color:#c9c9c9 ;
+    line-height:25px ;
+    color: rgb(51, 51, 51);
+    text-align: center;
+    margin: 0 2px;
+    border-radius: 5px;
+    padding: 3px 7px 1px;
+    transition: all .4s;
+}
+#social-menu a i{
+    font-size: 18px;;
+}
+#social-menu a:hover{
+    background-color: #c511e9;
+    color: #fff;
+}
+
+
+
+/* start navbar-------------------------------------------------------- */
+nav{
+    border-bottom: #c511e9 4px solid;
+    background-color: #242424;
+}
+#nav-logo{
+    width: 150px;
+}
+#nav-login{
+    color: #fff;
+}
+#nav-login a{
+    color: #eee;
+}
+
+
+
+
+/* start footer----------------------------------------------- */
+footer{
+    background-color:#1d1d1d;
+    border-top: #c511e9 1px solid;
+    padding: 15px 0px;
+}
+#item-footer{
+    margin: 15px;
+    overflow: hidden;
+}
+#item-footer h2{
+    background-color: #141414;
+    font-size: 20px;
+    border-bottom: #c511e9 4px solid;
+}
+#item-footer h1,
+#item-footer h2,
+#item-footer h3,
+#item-footer h4,
+#item-footer h5,
+#item-footer h6,
+#item-footer a,
+#item-footer ul,
+#item-footer span,
+#item-footer p{
+    padding: 10px 7px;
+    font-size: 14px;
+}
+#location-footer{
+    width: 100%;
+    height: 15em;
+}
+
+
+
+/* start main----------------------------------------------------------- */
+
+
+
+/* start auth-----------------------------------------------------------*/
+/* start login======= */
+#login{
+    background-color: #141414;
+}
+#card-login{}
+#card-signup form{
+    text-align: center;
+    padding: 30px 0;
+}
+.input-form{
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 35px;
+}
+.input-form input{
+    background: none;
+    color: #bbb;
+    border: none;
+    border-bottom:#bbb 1px solid ;
+    padding: 5px;
+}
+.input-form select{
+    background: none;
+    color: #bbb;
+    border: none;
+    border-bottom:#bbb 1px solid ;
+    padding: 5px;
+}
+#card-signup form span{
+    font-size: 13px;
+    top: 5px;
+    right: 5px;
+    
+}
+#card-signup form i{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+
+#login h2{
+    color: #c511e9;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+/* start register======= */
+#form-register{
+
+}
+#form-register input{
+    width: 200px;
+    margin: 7px;
+}
+
+/* validation form */
+.error{
+
+    color: #b11f1f !important;
+    border: none;
+    border-bottom:#b11f1f 3px solid !important;
+}
+

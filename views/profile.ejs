@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include("common/head.ejs") %>
+    <title>Document</title>
+</head>
+<body>
+    <%- include("common/navbar.ejs") %>
+    <div class="container-sm">
+        <h2 class="titr" class="m-2">پروفایل کاربری</h2>
+        <span>وارد شده در تاریخ <%= result.createAd%> </span>
+        <form action="/auth/logOut" method="get">
+            <button type="submit" class="my-button">خروج</button>
+        </form>
+        <form action="/auth/update" method="post">
+            <div id="form-register" class="d-flex flex-wrap">
+                                    
+                <div class="input-form col-lg-6 p-2">
+                    <input id="register-name" class="w-100" type="text" value="<%= result.fristname %> "
+                        name="fristname" >
+                </div>
+                <div class="input-form col-lg-6 p-2">
+                    <input id="register-lastname" class="w-100" type="text"
+                    value="<%= result.lastname %> " name="lastname">
+                </div>
+                <div class="input-form col-lg-6 p-2">
+                    <input id="username" class="w-100" type="text" value="<%= result.username %> "
+                        name="username">
+                </div>
+                <div class="input-form col-lg-6 p-2">
+                    <input id="register-email" class="w-100 m-2" type="email"  value="<%= result.email %> "
+                        name="email">
+                </div>
+                <div class="input-form col-lg-12">
+                    <button type="submit" class="my-button3 w-100" >ثبت نام</button>
+        </form>
+    </div>
+
+    <button class="my-button p-2" onclick="showUsers()">نمایش کاربران</button>
+    <table id="tableUsers"> 
+        <thead>
+            <th>نام و نام خانوادگی</th>
+            <th>نام کاربری</th>
+            <th>یمیل</th>
+            <th>تلفن همراه</th>
+            <th>جنسیت</th>
+            <th>عملیات</th>
+        </thead>
+        <tr>
+            
+        </tr>
+    </table>
+    
+    <%- include("common/footer.ejs") %>
+    <%- include("common/script.ejs") %>
+</body>
+</html>
