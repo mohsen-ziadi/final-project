@@ -1,57 +1,89 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <%- include("common/head.ejs") %>
-    <title>Document</title>
+        <title>Document</title>
 </head>
+
 <body>
     <%- include("common/navbar.ejs") %>
-    <div class="container-sm">
-        <h2 class="titr" class="m-2">پروفایل کاربری</h2>
-        <span>وارد شده در تاریخ <%= result.createAd%> </span>
-        <form action="/auth/logOut" method="get">
-            <button type="submit" class="my-button">خروج</button>
-        </form>
-        <form action="/auth/update" method="post">
-            <div id="form-register" class="d-flex flex-wrap">
-                                    
-                <div class="input-form col-lg-6 p-2">
-                    <input id="register-name" class="w-100" type="text" value="<%= result.fristname %> "
-                        name="fristname" >
-                </div>
-                <div class="input-form col-lg-6 p-2">
-                    <input id="register-lastname" class="w-100" type="text"
-                    value="<%= result.lastname %> " name="lastname">
-                </div>
-                <div class="input-form col-lg-6 p-2">
-                    <input id="username" class="w-100" type="text" value="<%= result.username %> "
-                        name="username">
-                </div>
-                <div class="input-form col-lg-6 p-2">
-                    <input id="register-email" class="w-100 m-2" type="email"  value="<%= result.email %> "
-                        name="email">
-                </div>
-                <div class="input-form col-lg-12">
-                    <button type="submit" class="my-button3 w-100" >ثبت نام</button>
-        </form>
-    </div>
 
-    <button class="my-button p-2" onclick="showUsers()">نمایش کاربران</button>
-    <table id="tableUsers"> 
-        <thead>
-            <th>نام و نام خانوادگی</th>
-            <th>نام کاربری</th>
-            <th>یمیل</th>
-            <th>تلفن همراه</th>
-            <th>جنسیت</th>
-            <th>عملیات</th>
-        </thead>
-        <tr>
-            
-        </tr>
-    </table>
-    
-    <%- include("common/footer.ejs") %>
-    <%- include("common/script.ejs") %>
+        <div class="container-sm">
+            <div class="d-flex">
+                <div id="sidebar-profile" class="col-lg-2">
+                    <button id="profile-button" class="w-100 my-button button-active">پروفایل شما</button>
+                    <% if (result.role==="admin" ) { %>
+                        <button id="post-button" class="w-100 my-button ">نوشتن مطلب جدید</button>
+                        <button id="manageUser-button" class="w-100 my-button">مدیریت کاربران</button>
+                        <% } %>
+                            <button id="favorite-button" class="w-100 my-button">مطالب مورد علاقه</button>
+                            <form action="/auth/logOut" method="get">
+                                <button id="logOut-button" type="submit" class="my-button w-100">خروج</button>
+                            </form>
+                </div>
+                <div id="content-profile" class="col-lg-10">
+                    <div id="profile-content" class="w-100 p-3 content-profile hide-content-profile">
+                        <form action="/auth/update" method="post">
+                           <label for="fristname-update">نام:</label>
+                           <input id="fristname-update" type="text" value="<%= result.fristname %> " class="w-25 p-1" name="fristname"><br>
+                          
+                           <label for="lastname-update"> نام خانوادگی:</label>
+                           <input id="lastname-update" type="text" value="<%= result.lastname %> " class="w-25 p-1" name="lastname"><br>
+                          
+                           <label for="username-update">نام کاربری :</label>
+                           <input id="username-update" type="text" value="<%= result.username %> " class="w-25 p-1" name="username"><br>
+                         
+                           <label for="email-update">ایمیل:</label>
+                           <input id="email-update" type="text" value="<%= result.email %> " class="w-25 p-1" name="email"><br>
+                         
+                           <label for="callnumber-update">شماره تلفن:</label>
+                           <input id="callnumber-update" type="text" value="<%= result.callnumber %> " class="w-25 p-1" name="callnumber"><br>
+                          
+                           <label for=""></label>
+                           <button type="submit" class="my-button3 w-25">بروزرسانی</button>
+                        </form>
+                    </div>
+                    <div id="post-content" class="w-100 p-3 content-profile hide-content-profile">
+                        متاسفانه بخش مدیریت پست در دسترس نیست!!!!!!!!
+                    </div>
+                    <div id="manageUser-content" class="w-100 p-3 content-profile hide-content-profile">
+                       <table id="user-table" class="w-100">
+                           <thead>
+                               <th>نام و نام خانوادگی</th>
+                               <th>نام کاربری</th>
+                               <th>ایمیل</th>
+                               <th>نقش</th>
+                               <th>عملیات</th>
+                           </thead>
+
+                           <% for( let index = 0; index < resultUser.length; index++ ) { %>
+                            <tr>
+                                <td><%= resultUser[index].fristname %>  <%= resultUser[index].lastname %> </td>
+                                <td><%= resultUser[index].username %> </td>
+                                <td><%= resultUser[index].email %> </td>
+                                <td><%= resultUser[index].role %> </td>
+                                <td><button class="m-1">ویرایش</button><a class="m-1" href="/auth/deletuser/<%= resultUser[index].username %> ">حذف</a></td>
+                            </tr>
+                    
+                           <% } %>
+
+                       
+                               
+                       </table>
+                    </div>
+                    <div id="favorite-content" class="w-100 p-3 content-profile hide-content-profile">
+                        متاسفانه بخش مطالب مورد علاقه در دسترس نیس!!!!!!!!!!
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+
+        <%- include("common/footer.ejs") %>
+            <%- include("common/script.ejs") %>
 </body>
+
 </html>

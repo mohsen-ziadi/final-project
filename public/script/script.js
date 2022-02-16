@@ -9,15 +9,38 @@ $(".hide-pass").click(function () {
     }
 });
 
-function showUsers(){
-    $.ajax({
-        type: "get",
-        url: "/auth/showUsers",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function(result){
-            console.log(result);
-        }
-    });
-}
+$(".content-profile").hide()
+$("#profile-content").show();
+
+$("#profile-button").click(function () {
+    $(".my-button").removeClass("button-active");
+    $(this).addClass("button-active");
+
+    $(".content-profile").hide();
+    $("#profile-content").show();
+});
+
+$("#post-button").click(function () {
+    $(".my-button").removeClass("button-active");
+    $(this).addClass("button-active");
+    $(".content-profile").hide();
+    $("#post-content").show();
+});
+
+$("#manageUser-button").click(function () {
+    $(".my-button").removeClass("button-active");
+    $(this).addClass("button-active");
+    $(".content-profile").hide();
+    $("#manageUser-content").show();
+});
+
+$("#favorite-button").click(function () {
+    $(".my-button").removeClass("button-active");
+    $(this).addClass("button-active");
+    $(".content-profile").hide();
+    $("#favorite-content").show();
+
+});
+
+
 

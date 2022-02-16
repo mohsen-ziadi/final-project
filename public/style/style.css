@@ -61,6 +61,17 @@ span{
     background: #fff;
     color: #c511e9;
 }
+.button-active{
+    border: none;
+    background-color: #242424;
+    color: #fff;
+    padding: 15px 0px;
+}
+.button-active:hover{
+    background-color: #242424;
+    color: #fff;
+
+}
 ul{
     padding: 0;
     margin: 0;
@@ -228,4 +239,75 @@ footer{
     border: none;
     border-bottom:#b11f1f 3px solid !important;
 }
+
+/* profile----------------------------------------- */
+/* sidebar ========== */
+#sidebar-profile{
+    margin: 25px 0px;
+    background-color: #1d1d1d;
+}
+
+#sidebar-profile button{
+    border-radius: 0;
+}
+
+#sidebar-profile form button{
+    border-radius: 0;
+    background-color: #812626;
+    border: 1px solid #812626;
+    color: #fff;
+}
+
+#sidebar-profile form button:hover{
+    background-color: #fff;
+    color: red;
+}
+
+/* content profile ========= */
+#content-profile {
+    margin: 25px 0px;
+
+    background-color: #242424;
+ }
+ 
+#content-profile label{
+   width: 100px ;
+   margin-bottom: 15px;
+}
+
+#content-profile input{
+    background: none;
+    color: #bbb;
+    border: none;
+    border-bottom:#c511e9 1px solid ;
+    padding: 5px;
+    text-align: center;
+ }
+ 
+ /* manage users ======= */
+
+ #user-table{
+     text-align: center;
+     background-color: #141414;
+     padding: 10px;;
+ }
+
+ #user-table th{
+     padding: 10px;
+    border: 2px solid #666;
+    background-color: #333;
+     /* background-color: #1d1d1d; */
+
+ }
+
+ #user-table td{
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid #666;
+    /* background-color: #1d1d1d; */
+
+}
+
+
+
 

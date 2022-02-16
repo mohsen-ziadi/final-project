@@ -1,10 +1,19 @@
 var express = require("express");
 var router = express.Router();
 const path = require("path");
+const user = require("../model/user");
 const User = require("../model/user")
 
-router.get("/",  (req, res) => {
-        if (req.session.user && req.cookies.user_sid) {
+function sessionChecker(req, res, next) {
+    if (req.session.user && req.cookies.user_sid) {
+        return res.redirect("/auth/profile");
+    }
+}
+
+
+
+router.get("/", (req, res) => {
+    if (req.session.user && req.cookies.user_sid) {
         return res.redirect("/auth/profile");
     }
     res.render("signUp", { status: "", msg: "" });
@@ -56,12 +65,17 @@ router.get("/profile", (req, res) => {
     if (!req.session.user || !req.cookies.user_sid) {
         res.redirect("/auth")
     }
-    res.render("profile", { result: req.session.user });
+    // console.log(resultUser);
+    
+    User.find({}, (err, resultUser) => {
+        res.render("profile", { result: req.session.user, resultUser });
+        console.log(resultUser);
+    })
 })
 
 
 router.post("/update", (req, res) => {
-    User.findOneAndUpdate({ username: req.body.username.toLowerCase().trim() }, { fristname: req.body.fristname, lastname: req.body.lastname, email: req.body.email, uwrename: req.body.username.toLowerCase().trim() }, { new: true }, function (err) {
+    User.findOneAndUpdate({ username: req.body.username.toLowerCase().trim() }, { fristname: req.body.fristname, lastname: req.body.lastname, email: req.body.email, userename: req.body.username.toLowerCase().trim() }, { new: true }, function (err) {
         if (err) {
             return console.log("err>>>>>>>>>" + err);
         }
@@ -70,16 +84,21 @@ router.post("/update", (req, res) => {
     })
 })
 
-router.get("/logOut",(req,res)=>{
+router.get("/logOut", (req, res) => {
     res.clearCookie("user_sid");
     res.redirect("/auth")
 })
 
-function sessionChecker(req, res, next) {
-    if (req.session.user && req.cookies.user_sid) {
-        return res.redirect("/auth/profile");
-    }
-}
+router.get("/deletuser/:username",(req,res)=>{
+    console.log(req.params.username);
+    User.deleteOne({username:req.params.username},(err)=>{
+        if(err){
+            return res.send("eror!!!!!!!!!!!!!!!!!!!!!!!!")
+        }
+    });
+    res.redirect("/auth/profile")
+    // res.redirect("/auth/profile")
+})
 
 
 
