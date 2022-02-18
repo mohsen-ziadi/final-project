@@ -2,7 +2,9 @@ var express = require("express");
 var router = express.Router();
 const path = require("path");
 const user = require("../model/user");
-const User = require("../model/user")
+const User = require("../model/user");
+
+
 
 function sessionChecker(req, res, next) {
     if (req.session.user && req.cookies.user_sid) {
@@ -44,16 +46,22 @@ router.post("/register", (req, res) => {
 })
 
 
+
+router.get("/", (req, res) => {
+res.render("main");
+})
+
 router.post("/login", (req, res) => {
-    console.log(req.body);
     User.findOne({ username: req.body.username.toLowerCase().trim() }, (err, result) => {
-        // console.log(result);
+
         if (err) {
             console.log(err);
             return res.redirect("/auth")
+            // return alert("eror")
         }
         if (result.password != req.body.password) {
             return res.redirect("/auth")
+
         }
         req.session.user = result;
 
@@ -66,16 +74,24 @@ router.get("/profile", (req, res) => {
         res.redirect("/auth")
     }
     // console.log(resultUser);
-    
+
     User.find({}, (err, resultUser) => {
         res.render("profile", { result: req.session.user, resultUser });
-        console.log(resultUser);
+
     })
 })
 
 
 router.post("/update", (req, res) => {
-    User.findOneAndUpdate({ username: req.body.username.toLowerCase().trim() }, { fristname: req.body.fristname, lastname: req.body.lastname, email: req.body.email, userename: req.body.username.toLowerCase().trim() }, { new: true }, function (err) {
+    User.findOneAndUpdate({ username: req.body.username.toLowerCase().trim() }, {
+        fristname: req.body.fristname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        userename: req.body.username.toLowerCase().trim(),
+        callnumber: req.body.callnumber,
+        sex: req.body.sex,
+        role: req.body.role
+    }, { new: true }, function (err) {
         if (err) {
             return console.log("err>>>>>>>>>" + err);
         }
@@ -89,16 +105,25 @@ router.get("/logOut", (req, res) => {
     res.redirect("/auth")
 })
 
-router.get("/deletuser/:username",(req,res)=>{
-    console.log(req.params.username);
-    User.deleteOne({username:req.params.username},(err)=>{
-        if(err){
+router.get("/deletuser/:username", (req, res) => {
+    User.deleteOne({ username: req.params.username }, (err) => {
+        if (err) {
             return res.send("eror!!!!!!!!!!!!!!!!!!!!!!!!")
         }
     });
     res.redirect("/auth/profile")
     // res.redirect("/auth/profile")
 })
+
+router.get("/updateUser/:username", (req, res) => {
+    console.log("sss>>>", req.params.username );
+    User.findOne({ username: req.params.username }, (err, result) => {
+        console.log(result);
+        res.render("update", { result:result })
+    })
+   
+})
+
 
 
 

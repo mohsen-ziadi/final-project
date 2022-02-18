@@ -13,8 +13,8 @@
             <div class="d-flex">
                 <div id="sidebar-profile" class="col-lg-2">
                     <button id="profile-button" class="w-100 my-button button-active">پروفایل شما</button>
+                    <button id="post-button" class="w-100 my-button ">مقالات</button>
                     <% if (result.role==="admin" ) { %>
-                        <button id="post-button" class="w-100 my-button ">نوشتن مطلب جدید</button>
                         <button id="manageUser-button" class="w-100 my-button">مدیریت کاربران</button>
                         <% } %>
                             <button id="favorite-button" class="w-100 my-button">مطالب مورد علاقه</button>
@@ -25,6 +25,12 @@
                 <div id="content-profile" class="col-lg-10">
                     <div id="profile-content" class="w-100 p-3 content-profile hide-content-profile">
                         <form action="/auth/update" method="post">
+                            
+                            <div id="image-update">
+                                <img src="/images/prof.jpg" alt="" class="w-100">
+                                <button class="change-image"> <i class="fa fa-camera"></i> </button>
+                            </div><br>
+                           
                            <label for="fristname-update">نام:</label>
                            <input id="fristname-update" type="text" value="<%= result.fristname %> " class="w-25 p-1" name="fristname"><br>
                           
@@ -45,7 +51,11 @@
                         </form>
                     </div>
                     <div id="post-content" class="w-100 p-3 content-profile hide-content-profile">
-                        متاسفانه بخش مدیریت پست در دسترس نیست!!!!!!!!
+                      <form action="/post/add" method="post">
+                          <input type="text" name="title" class="mb-3"><br>
+                          <textarea name="intro" id="" cols="30" rows="10"></textarea><br>
+                          <button type="submit"> ارسال</button>
+                      </form>
                     </div>
                     <div id="manageUser-content" class="w-100 p-3 content-profile hide-content-profile">
                        <table id="user-table" class="w-100">
@@ -58,13 +68,17 @@
                            </thead>
 
                            <% for( let index = 0; index < resultUser.length; index++ ) { %>
-                            <tr>
-                                <td><%= resultUser[index].fristname %>  <%= resultUser[index].lastname %> </td>
-                                <td><%= resultUser[index].username %> </td>
-                                <td><%= resultUser[index].email %> </td>
-                                <td><%= resultUser[index].role %> </td>
-                                <td><button class="m-1">ویرایش</button><a class="m-1" href="/auth/deletuser/<%= resultUser[index].username %> ">حذف</a></td>
-                            </tr>
+                              
+                                    <tr>
+                                        <td><%= resultUser[index].fristname %>  <%= resultUser[index].lastname %> </td>
+                                        <td><%= resultUser[index].username %> </td>
+                                        <td><%= resultUser[index].email %> </td>
+                                        <td><%= resultUser[index].role %> </td>
+                                        <td>
+                                            <% if ( resultUser[index].role === "blogger") { %> <a href="/auth/updateUser/<%= resultUser[index].username %>">ویرایش</a> / <a class="m-1" href="/auth/deletuser/<%= resultUser[index].username %> ">حذف</a>
+                                <% } %>
+                            </td>
+                                    </tr>
                     
                            <% } %>
 
@@ -87,3 +101,4 @@
 </body>
 
 </html>
+

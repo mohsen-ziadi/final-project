@@ -8,8 +8,9 @@ const session = require("express-session")
 const logger = require("morgan")
 
 // Add routes
-const router = require('./router/main.js');
-const authRouter = require("./router/auth")
+const router = require('./router/main');
+const postRouter = require('./router/post');
+const authRouter = require("./router/auth");
 
 //Add database
 const mongoose = require("mongoose");
@@ -44,9 +45,10 @@ app.use((req,res,next)=>{
     }
     next();
 })
-
 app.use('/', router);
+app.use('/post', postRouter);
 app.use('/auth', authRouter);
+
 
 
 app.listen(port);

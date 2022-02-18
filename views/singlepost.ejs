@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include("common/head.ejs") %>
+    <title>Document</title>
+</head>
+<body>
+    <%- include("common/navbar.ejs") %>
+    <div class="container-sm">
+        <div id="image-post-view">
+            <img src="" alt="">
+        </div>
+        
+        <div id="content-post-view" class="p-2">
+            <h4><%= post[index].title %> </h4>
+            <span><%= post[index].author %></span>  <br>
+            <span class="mb-3"><%= post[index].createAt %></span>  <br>
+            <a href="/post/<%= post[index]._id %>" class="my-button w-100">ادامه مطلب</a>
+        </div>
+    </div>
+    <%- include("common/footer.ejs") %>
+    <%- include("common/script.ejs") %>
+</body>
+</html>
