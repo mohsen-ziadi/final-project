@@ -14,9 +14,9 @@
                 <div id="sidebar-profile" class="col-lg-2">
                     <button id="profile-button" class="w-100 my-button button-active">پروفایل شما</button>
                     <button id="post-button" class="w-100 my-button ">مقالات</button>
-                    <% if (result.role==="admin" ) { %>
+
                         <button id="manageUser-button" class="w-100 my-button">مدیریت کاربران</button>
-                        <% } %>
+
                             <button id="favorite-button" class="w-100 my-button">مطالب مورد علاقه</button>
                             <form action="/auth/logOut" method="get">
                                 <button id="logOut-button" type="submit" class="my-button w-100">خروج</button>
@@ -47,7 +47,9 @@
                            <input id="callnumber-update" type="text" value="<%= result.callnumber %> " class="w-25 p-1" name="callnumber"><br>
                           
                            <label for=""></label>
-                           <button type="submit" class="my-button3 w-25">بروزرسانی</button>
+                           <button type="submit" class="my-button3 w-25">بروزرسانی</button><br>
+                            <label for=""></label>
+                           <a href="/auth/delete-account" class="w-25 my-button">حذف حساب کاربری</a>
                         </form>
                     </div>
                     <div id="post-content" class="w-100 p-3 content-profile hide-content-profile">

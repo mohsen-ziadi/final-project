@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     fristname:{
         type: String,
-        required: true,
+        required: true
     },
     lastname:{
         type: String,
-        required: true,
+        required: true
     },
     username:{
         type: String,

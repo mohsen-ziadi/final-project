@@ -184,7 +184,7 @@ footer{
 
 /* start auth-----------------------------------------------------------*/
 /* start login======= */
-#login{
+.login{
     background-color: #141414;
 }
 #card-login{}
@@ -224,7 +224,7 @@ footer{
 }
 
 
-#login h2{
+.login h2{
     color: #c511e9;
     font-size: 28px;
     margin-bottom: 25px;

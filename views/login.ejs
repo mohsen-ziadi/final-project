@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include("common/head.ejs") %>
+        <title>Document</title>
+</head>
+
+<body>
+    <%- include("common/navbar.ejs") %>
+        <div class="login">
+            <div class="container-sm">
+                <div class="container-sm">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div id="card-signup" class=" w-75 ">
+                            <div class=" d-flex justify-content-center">
+                                <form action="/auth/login" method="post" class="w-50 form-signup" id="form-login">
+                                    <h2 class="titr">ورود به پنل کاربری</h2>
+                                    <div class="w-75 input-form">
+                                        <input type="text" class="w-100" name="username" placeholder="نام کاربری:">
+                                    </diV>
+                                    <div class="w-75 input-form">
+                                        <input type="password" class="w-100 password-hide" name="password"
+                                            placeholder=" مرز عبور:">
+                                        <i class="fa fa-eye hide-pass" id="hide-pass"></i>
+                                    </div>
+                                    <button type="submit" class="my-button2 w-75">ورود</button><br>
+                                    <span>اگر هنوز ثبت نام نکردید از <b><ins><a
+                                                    href="/auth/register">اینجا</a></ins></b> اقدام کنید.</span><br>
+                                    <span style="color: red;">
+                                        <%= msg %>
+                                    </span>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include("common/footer.ejs") %>
+            <%- include("common/script.ejs") %>
+</body>
+
+</html>
